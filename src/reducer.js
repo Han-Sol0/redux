@@ -1,21 +1,26 @@
-import { useState } from "react";
-import { createEmptyField } from "./utils";
-import { STATUS, PLAYER } from "./constants";
+import {
+  STATUS,
+  PLAYER,
+  PLAYER_ACTION,
+  PLAYER_NAME,
+  PLAYER_SIGN,
+  WIN_PATTERNS,
+} from "./constants";
 
-const [status, setStatus] = useState(STATUS.TURN);
-const [currentPlayer, setCurrentPlayer] = useState(PLAYER.CROSS);
-const [field, setField] = useState(createEmptyField());
-const state = {
-  status,
-  setStatus,
-  currentPlayer,
-  setCurrentPlayer,
-  field,
-  setField,
+export const initialState = {
+  STATUS,
+  PLAYER,
+  PLAYER_ACTION,
+  PLAYER_NAME,
+  PLAYER_SIGN,
+  WIN_PATTERNS,
 };
 
-export const initialState = state;
-
-export const appReducer = (state = initialState, action) => {
-  return state;
+export const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "RESTART_GAME":
+      return initialState;
+    default:
+      return state;
+  }
 };

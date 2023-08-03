@@ -1,12 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import { Game } from './game';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { Game } from "./game";
+import { Provider } from "react-redux";
+import { store } from "./constants/store";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-	<React.StrictMode>
-		<Game />
-	</React.StrictMode>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <Game />
+    </Provider>
+  </React.StrictMode>
 );
