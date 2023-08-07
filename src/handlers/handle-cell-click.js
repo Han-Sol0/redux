@@ -1,29 +1,34 @@
-import { checkWin, checkEmptyCell } from '../utils';
-import { STATUS, PLAYER } from '../constants';
+import { checkWin, checkEmptyCell } from "../utils";
+import { STATUS, PLAYER } from "../constants";
+import { useDispatch } from "react-redux";
 
 export const handleCellClick = (
-	{ status, field, currentPlayer, setField, setStatus, setCurrentPlayer },
-	cellIndex,
+  { status, field, currentPlayer, setField, setStatus, setCurrentPlayer },
+  cellIndex
 ) => {
-	if (
-		status === STATUS.WIN ||
-		status === STATUS.DRAW ||
-		field[cellIndex] !== PLAYER.NOBODY
-	) {
-		return;
-	}
+  const dispatch = useDispatch();
+  dispatch({ type: "CELL_CLICK", payload: { cellIndex } });
+  if (
+    status === STATUS.WIN ||
+    status === STATUS.DRAW ||
+    field[cellIndex] !== PLAYER.NOBODY
+  ) {
+    return;
+  }
 
-	const newField = [...field];
+  const newField = [...field];
 
-	newField[cellIndex] = currentPlayer;
+  newField[cellIndex] = currentPlayer;
 
-	setField(newField);
+  setField(newField);
 
-	if (checkWin(newField, currentPlayer)) {
-		setStatus(STATUS.WIN);
-	} else if (checkEmptyCell(newField)) {
-		setCurrentPlayer(currentPlayer === PLAYER.CROSS ? PLAYER.NOUGHT : PLAYER.CROSS);
-	} else {
-		setStatus(STATUS.DRAW);
-	}
+  if (checkWin(newField, currentPlayer)) {
+    setStatus(STATUS.WIN);
+  } else if (checkEmptyCell(newField)) {
+    setCurrentPlayer(
+      currentPlayer === PLAYER.CROSS ? PLAYER.NOUGHT : PLAYER.CROSS
+    );
+  } else {
+    setStatus(STATUS.DRAW);
+  }
 };
