@@ -1,8 +1,7 @@
 import { FieldLayout } from "./field-layout";
 
 import { PLAYER, STATUS } from "../../constants";
-import styles from "./field.module.css";
-import { useSelector, useStore, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { checkWin, checkEmptyCell } from "../../utils";
 
 export const Field = () => {

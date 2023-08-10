@@ -3,11 +3,10 @@ import { STATUS, PLAYER } from "./constants";
 export const initialState = {
   status: STATUS.TURN,
   currentPlayer: PLAYER.CROSS,
-  field: new Array(9).fill(""),
+  field: new Array(9).fill(PLAYER.NOBODY),
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
-  console.log(state);
   switch (type) {
     case "SET_FIELD":
       return { ...state, field: payload };

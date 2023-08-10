@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Field, Information } from "./components";
-import { PLAYER, STATUS } from "./constants";
+
 import styles from "./game.module.css";
 
 export const GameLayout = ({ handleRestart }) => (

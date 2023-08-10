@@ -1,7 +1,4 @@
 import { GameLayout } from "./game-layout";
-
-import { store } from "./constants/store";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 export const Game = () => {
